@@ -1,0 +1,57 @@
+﻿@model IEnumerable<moviesLibrary.Models.Film>
+
+@{
+    ViewData["Title"] = "SortByTitle";
+}
+
+<h1>Affichage en ordre alphabetique</h1>
+<br />
+<a asp-action="Index">Retour à la liste</a><br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realisateur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnneeSortie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acteur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Realisateur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnneeSortie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acteur)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { titre = item.Titre }) |
+                    @Html.ActionLink("Details", "Details", new { titre = item.Titre }) |
+                    @Html.ActionLink("Delete", "Delete", new { titre = item.Titre }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

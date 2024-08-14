@@ -1,0 +1,84 @@
+﻿@model IEnumerable<moviesLibrary.Models.Film>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div style="display: flex; gap: 10px;">
+<form asp-action="SearchByGenre" method="get">
+    <div class="form-group">
+        <label for="genre" style="color:black">Recherche par genre:</label>
+        <input type="text" class="form-control" name="genre" id="genre" style="width: 200px; font-size: small;" />
+    </div><br />
+    <button type="submit" class="btn btn-primary">Recherche</button>
+</form>
+<br />
+<form asp-action="SearchByActor" method="get">
+    <div class="form-group">
+        <label for="actor" style="color:black">Recherche par acteur:</label>
+        <input type="text" class="form-control" name="Acteur" id="Acteur" style="width: 200px; font-size: small;" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Recherche</button>
+</form>
+</div>
+<br />
+<br />
+<a asp-action="SortByTitle" class="btn btn-secondary">Afficher les films par orde Alphabétique</a>
+<br /><br />
+
+<p>
+    <a asp-action="Create">Ajouter un nouveau film</a>
+</p>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realisateur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnneeSortie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acteur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Realisateur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnneeSortie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acteur)
+            </td>
+            <td>
+                
+                 @Html.ActionLink("Edit", "Edit", new { titre = item.Titre }) |
+                 @Html.ActionLink("Details", "Details", new { titre = item.Titre }) |
+                 @Html.ActionLink("Delete", "Delete", new { titre = item.Titre }) |
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

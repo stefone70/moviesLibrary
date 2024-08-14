@@ -1,0 +1,66 @@
+﻿@model moviesLibrary.Models.Film
+
+@{
+    ViewData["Title"] = "Create";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Créer un nouveau film</h1>
+
+        <h4>Film</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Titre" class="control-label"></label>
+                        <input asp-for="Titre" class="form-control" />
+                        <span asp-validation-for="Titre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Genre" class="control-label"></label>
+                        <input asp-for="Genre" class="form-control" />
+                        <span asp-validation-for="Genre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Realisateur" class="control-label"></label>
+                        <input asp-for="Realisateur" class="form-control" />
+                        <span asp-validation-for="Realisateur" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnneeSortie" class="control-label"></label>
+                        <input asp-for="AnneeSortie" class="form-control" />
+                        <span asp-validation-for="AnneeSortie" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Acteur" class="control-label"></label>
+                        <input asp-for="Acteur" class="form-control" />
+                        <span asp-validation-for="Acteur" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Ajouter" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

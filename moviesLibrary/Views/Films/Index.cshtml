@@ -1,0 +1,167 @@
+﻿@model IEnumerable<moviesLibrary.Models.Film>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style ="color:black">Liste et recherche</h1>
+
+<div style="display: flex; gap: 10px;">
+
+<form asp-action="SearchByGenre" method="get">
+    <div class="form-group">
+        <label for="genre" style="color:black">Recherche par genre:</label>
+        <input type="text" class="form-control" name="genre" id="genre" style="width: 200px; font-size: small;" />
+    </div><br />
+    <button type="submit" class="btn btn-primary ">Recherche</button>
+</form>
+
+    
+<form asp-action="SearchByActor" method="get">
+    <div class="form-group">
+        <label for="actor" style="color:black">Recherche par acteur:</label>
+        <input type="text" class="form-control" name="actor" id="actor" style="width: 200px; font-size: small;" />
+    </div><br />
+        <button type="submit" class="btn btn-primary ">Recherche</button>
+</form>
+
+    <form asp-action="SearchByRealisateur" method="get">
+        <div class="form-group">
+            <label for="actor" style="color:black">Recherche par réalisateur:</label>
+            <input type="text" class="form-control" name="realisateur" id="realisateur" style="width: 200px; font-size: small;" />
+        </div><br />
+        <button type="submit" class="btn btn-primary ">Recherche</button>
+    </form>
+
+    <form asp-action="SearchByAnneeSortie" method="get">
+        <div class="form-group">
+            <label for="actor" style="color:black">Recherche par année de sortie:</label>
+            <input type="text" class="form-control" name="anneeSortie" id="anneeSortie" style="width: 200px; font-size: small;" />
+        </div><br />
+        <button type="submit" class="btn btn-primary">Recherche</button>
+    </form>
+</div>
+<br />
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-warning">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+    <br />
+
+<div class="mb-3">
+    <a asp-action="SortByYear" class="btn btn-secondary">Classer du plus ancien au plus récent</a>
+</div><br />
+
+<h3 style="color:black">Recherche avancée</h3>
+    <br />
+
+<form asp-action="AdvancedSearch" method="get" style="color:black">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Titre">Titre</label>
+            <input type="text" name="Titre" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="Genre">Genre</label>
+            <input type="text" name="Genre" class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Realisateur">Réalisateur</label>
+            <input type="text" name="Realisateur" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="AnneeSortie">Année de sortie</label>
+            <input type="number" name="AnneeSortie" class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="Acteur">Acteur</label>
+            <input type="text" name="Acteur" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary search-button">Recherche avancée</button>
+</form>
+<br />
+    <a asp-action="Create">Ajouter un nouveau film</a>
+<br />
+<a asp-action="Index">Retour à la liste</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Realisateur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnneeSortie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acteur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Realisateur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnneeSortie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acteur)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+        
+    </tbody>
+</table>
+
+<style>
+    .search-button {
+        transition: transform 0.5s, background-color 0.5s;
+    }
+
+        .search-button.rotate {
+            transform: rotate(360deg);
+            background-color: #28a745; 
+        }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const searchButton = document.querySelector('.search-button');
+        searchButton.addEventListener('click', () => {
+            searchButton.classList.add('rotate');
+            setTimeout(() => {
+                searchButton.classList.remove('rotate');
+            }, 1000); 
+        });
+    });
+</script>

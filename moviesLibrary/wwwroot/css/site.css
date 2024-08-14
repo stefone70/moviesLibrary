@@ -1,0 +1,76 @@
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+    font-size: 14px;
+    background-color: antiquewhite;
+    position: relative;
+    min-height: 100%;
+}
+
+
+body {
+    margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    background: url('') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+    .form-container h1, .form-container h4 {
+        color: #fff;
+    }
+
+    .form-container .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-container .form-group label {
+            color: #ccc;
+        }
+
+    .form-container .form-control {
+        background: rgba(255, 255, 255, 0.8);
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .form-container .btn-primary {
+        background: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+.centered-container {
+    border-radius: 10px 30px 0px 90px;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+    background-image: url('../images/avatar-cover-2.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    text-align: center;
+}
+    .centered-container h1 {
+        font-size: 5rem; 
+        color: white; 
+     
+    }
+    h1, h3{
+        text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+    }
